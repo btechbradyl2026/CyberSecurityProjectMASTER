@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Arrays</span><span class="s2">;</span>
+
+<span class="s3">//TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&quot;Run&quot;/&gt; or</span>
+<span class="s3">// click the &lt;icon src=&quot;AllIcons.Actions.Execute&quot;/&gt; icon in the gutter.</span>
+<span class="s0">public class </span><span class="s1">Main </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) </span><span class="s0">throws </span><span class="s1">InterruptedException </span><span class="s2">{</span>
+        <span class="s1">Message msg </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Message</span><span class="s2">(</span><span class="s4">&quot;yahoo!&quot;</span><span class="s2">);</span>
+        <span class="s1">Block blocks </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Block</span><span class="s2">(</span><span class="s1">msg</span><span class="s2">, </span><span class="s4">&quot;0000000000&quot;</span><span class="s2">);</span>
+
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">words </span><span class="s2">= {</span><span class="s4">&quot;brooklyn&quot;</span><span class="s2">, </span><span class="s4">&quot;message&quot;</span><span class="s2">, </span><span class="s4">&quot;glorp&quot;</span><span class="s2">, </span><span class="s4">&quot;blocks&quot;</span><span class="s2">, </span><span class="s4">&quot;lebron&quot;</span><span class="s2">, </span><span class="s4">&quot;spurs&quot;</span><span class="s2">, </span><span class="s4">&quot;rockets&quot;</span><span class="s2">, </span><span class="s4">&quot;great&quot;</span><span class="s2">, </span><span class="s4">&quot;run&quot;</span><span class="s2">};</span>
+        <span class="s1">Message</span><span class="s2">[] </span><span class="s1">msgs </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Message</span><span class="s2">[</span><span class="s1">words</span><span class="s2">.</span><span class="s1">length</span><span class="s2">];</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">words</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i </span><span class="s2">++) {</span>
+            <span class="s1">msgs</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s0">new </span><span class="s1">Message</span><span class="s2">(</span><span class="s1">words</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]);</span>
+            <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">11</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s1">Chain</span><span class="s2">.</span><span class="s1">theBlockchain</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">blocks</span><span class="s2">);</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0 </span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">msgs</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i </span><span class="s2">++) {</span>
+            <span class="s1">String pseudo </span><span class="s2">= </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+            <span class="s1">String</span><span class="s2">[] </span><span class="s1">temp </span><span class="s2">= </span><span class="s1">Chain</span><span class="s2">.</span><span class="s1">theBlockchain</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">).</span><span class="s1">hash</span><span class="s2">.</span><span class="s1">split</span><span class="s2">(</span><span class="s4">&quot; : &quot;</span><span class="s2">);</span>
+            <span class="s1">pseudo </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">[</span><span class="s5">0</span><span class="s2">] + </span><span class="s4">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">temp</span><span class="s2">[</span><span class="s5">1</span><span class="s2">] + </span><span class="s4">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">temp</span><span class="s2">[</span><span class="s5">2</span><span class="s2">];</span>
+
+            <span class="s1">Chain</span><span class="s2">.</span><span class="s1">theBlockchain</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Block</span><span class="s2">(</span><span class="s1">msgs</span><span class="s2">[</span><span class="s1">i</span><span class="s2">],</span><span class="s1">pseudo</span><span class="s2">));</span>
+        <span class="s2">}</span>
+
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

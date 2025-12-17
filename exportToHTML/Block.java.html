@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Block.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Block.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">security</span><span class="s2">.</span><span class="s1">MessageDigest</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">security</span><span class="s2">.</span><span class="s1">NoSuchAlgorithmException</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Block </span><span class="s2">{</span>
+    <span class="s0">boolean </span><span class="s1">genesis</span><span class="s2">;</span>
+    <span class="s1">String hash </span><span class="s2">= </span><span class="s3">&quot;&quot;</span><span class="s2">;</span>
+    <span class="s1">String previousHash </span><span class="s2">= </span><span class="s3">&quot;&quot;</span><span class="s2">;</span>
+
+
+    <span class="s1">Block</span><span class="s2">(</span><span class="s1">Message msg</span><span class="s2">, </span><span class="s1">String previousH </span><span class="s2">) {</span>
+
+        <span class="s1">previousHash </span><span class="s2">= </span><span class="s1">previousH</span><span class="s2">;</span>
+
+
+        <span class="s1">hash </span><span class="s2">= </span><span class="s1">Sha256Hasher</span><span class="s2">.</span><span class="s1">hashString</span><span class="s2">(</span><span class="s1">previousHash</span><span class="s2">) + </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">1</span><span class="s2">] + </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">0</span><span class="s2">] + </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">Sha256Hasher</span><span class="s2">.</span><span class="s1">hashString</span><span class="s2">(</span><span class="s1">Sha256Hasher</span><span class="s2">.</span><span class="s1">hashString</span><span class="s2">(</span><span class="s1">previousHash</span><span class="s2">) + </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">1</span><span class="s2">] + </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">0</span><span class="s2">]);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">previousH</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s3">&quot;0000000000&quot;</span><span class="s2">)) {</span>
+            <span class="s1">genesis </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s1">hash </span><span class="s2">= </span><span class="s3">&quot;0000000000&quot; </span><span class="s2">+ </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">1</span><span class="s2">] +  </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">0</span><span class="s2">] + </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">Sha256Hasher</span><span class="s2">.</span><span class="s1">hashString</span><span class="s2">(</span><span class="s3">&quot;0000000000&quot; </span><span class="s2">+ </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">1</span><span class="s2">] +  </span><span class="s3">&quot; : &quot; </span><span class="s2">+ </span><span class="s1">msg</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">()[</span><span class="s4">0</span><span class="s2">]);</span>
+        <span class="s2">}</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">hash</span><span class="s2">);</span>
+
+
+
+    <span class="s2">}</span>
+
+
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

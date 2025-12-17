@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Message.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Message.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">LocalDateTime</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">LocalDateTime</span><span class="s2">;</span>
+<span class="s0">public class </span><span class="s1">Message </span><span class="s2">{</span>
+    <span class="s1">String</span><span class="s2">[] </span><span class="s1">message </span><span class="s2">= </span><span class="s0">new </span><span class="s1">String</span><span class="s2">[</span><span class="s3">2</span><span class="s2">];</span>
+
+    <span class="s1">Message </span><span class="s2">(</span><span class="s1">String msg</span><span class="s2">) {</span>
+    <span class="s1">message</span><span class="s2">[</span><span class="s3">0</span><span class="s2">] = </span><span class="s1">msg</span><span class="s2">;</span>
+    <span class="s1">String gulp </span><span class="s2">= </span><span class="s1">String</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">LocalDateTime</span><span class="s2">.</span><span class="s1">now</span><span class="s2">());</span>
+    <span class="s1">message</span><span class="s2">[</span><span class="s3">1</span><span class="s2">] = </span><span class="s1">gulp</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String</span><span class="s2">[] </span><span class="s1">getMessage</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">message</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

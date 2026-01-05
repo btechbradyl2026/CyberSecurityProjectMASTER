@@ -20,23 +20,36 @@ public class Main {
             msgs[i] = new Message(words[i]);
         }
         Chain.theBlockchain.add(blocks);
-
-        for (int j = 0; j < generals.size(); j ++) {
-            Block[] hewn = new Block[generals.size()];
-            for (int i = 0; i < generals.size(); i ++) {
-                String pseudo = "";
-                String[] temp = generals.get(i).proposeBlock().getHash().split(":");
-                pseudo = temp[0] + " : " + temp[1] + " : " + temp[2];
-                hewn[i] = new Block(generals.get(i).getMessage(), pseudo);
-//            Chain.theBlockchain.add(new Block(generals.get(i).getMessage(), pseudo));
-            }
-            String[] strings = new String[generals.size()];
-            for (int k = 0; k < hewn.length; k ++) {
-                strings[k] = hewn[k].getHash();
-            }
-            Chain.theBlockchain.add(new Block(new Message(strings[j]), Chain.theBlockchain.getLast().previousHash));
-
+        Block[] blocks2 = new Block[generals.size()];
+        for (int i = 0; i < generals.size(); i ++) {
+            blocks2[i] = (generals.get(i).proposeBlock());
         }
+        System.out.println(blocks2);
+        String[] holay = new String[blocks2.length];
+        for (int i = 0; i < blocks2.length; i ++) {
+            holay[i] = (blocks2[i].getHash());
+        }
+        MostFrequentString.findMostFrequent(holay);
+        System.out.println(MostFrequentString.findMostFrequent(holay));
+
+        // holy fucking shit, the above code finds the most frequent hash in a block, blocks have hashes not strings, figure out how to compare this hash to the blocks and then add the blocks to the blockchain, might have to fake it with parsing to get the hash codes correct.
+
+//        for (int j = 0; j < generals.size(); j ++) {
+//            Block[] hewn = new Block[generals.size()];
+//            for (int i = 0; i < generals.size(); i ++) {
+//                String pseudo = "";
+//                String[] temp = generals.get(i).proposeBlock().getHash().split(":");
+//                pseudo = temp[0] + " : " + temp[1] + " : " + temp[2];
+//                hewn[i] = new Block(generals.get(i).getMessage(), pseudo);
+////            Chain.theBlockchain.add(new Block(generals.get(i).getMessage(), pseudo));
+//            }
+//            String[] strings = new String[generals.size()];
+//            for (int k = 0; k < hewn.length; k ++) {
+//                strings[k] = hewn[k].getHash();
+//            }
+//            Chain.theBlockchain.add(new Block(new Message(strings[j]), Chain.theBlockchain.getLast().previousHash));
+//
+//        }
         for (int z = 0; z < Chain.theBlockchain.size(); z ++) {
             System.out.println(Chain.theBlockchain.get(z).hash);
         }

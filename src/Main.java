@@ -20,11 +20,25 @@ public class Main {
             msgs[i] = new Message(words[i]);
         }
         Chain.theBlockchain.add(blocks);
-        for (int i = 0; i < generals.size(); i ++) {
-            String pseudo = "";
-            String[] temp = Chain.theBlockchain.get(i).hash.split(" : ");
-            pseudo = temp[0] + " : " + temp[1] + " : " + temp[2];
-            Chain.theBlockchain.add(new Block(generals.get(i).getMessage(), pseudo));
+
+        for (int j = 0; j < generals.size(); j ++) {
+            Block[] hewn = new Block[generals.size()];
+            for (int i = 0; i < generals.size(); i ++) {
+                String pseudo = "";
+                String[] temp = generals.get(i).proposeBlock().getHash().split(":");
+                pseudo = temp[0] + " : " + temp[1] + " : " + temp[2];
+                hewn[i] = new Block(generals.get(i).getMessage(), pseudo);
+//            Chain.theBlockchain.add(new Block(generals.get(i).getMessage(), pseudo));
+            }
+            String[] strings = new String[generals.size()];
+            for (int k = 0; k < hewn.length; k ++) {
+                strings[k] = hewn[k].getHash();
+            }
+            Chain.theBlockchain.add(new Block(new Message(strings[j]), Chain.theBlockchain.getLast().previousHash));
+
+        }
+        for (int z = 0; z < Chain.theBlockchain.size(); z ++) {
+            System.out.println(Chain.theBlockchain.get(z).hash);
         }
 //        for (int i = 0 ; i < msgs.length; i ++) {
 //            String pseudo = "";

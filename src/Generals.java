@@ -20,7 +20,7 @@ public class Generals {
         };
         Random random = new Random();
         int min = 0;
-        int max = rands.length;
+        int max = rands.length - 1;
         int randomNumber = random.nextInt(max - min + 1) + min;
         Message msg = new Message(rands[randomNumber]);
         return msg;

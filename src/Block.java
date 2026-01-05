@@ -17,11 +17,13 @@ public class Block {
             genesis = true;
             hash = "0000000000" + " : " + msg.getMessage()[1] +  " : " + msg.getMessage()[0] + " : " + Sha256Hasher.hashString("0000000000" + " : " + msg.getMessage()[1] +  " : " + msg.getMessage()[0]);
         }
-        System.out.println(hash);
 
 
 
     }
 
+    public String getHash() {
+        return hash;
+    }
 
 }

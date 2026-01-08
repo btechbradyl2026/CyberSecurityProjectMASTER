@@ -9,13 +9,18 @@ public class Main {
         Block blocks = new Block(msg, "0000000000");
         ArrayList<Generals> generals = new ArrayList<>();
         for (int i = 0; i < 100; i ++) {
-            generals.add(new Generals());
+            Generals newGen = new Generals();
+            if (newGen.getTrust()) {
+                generals.add(newGen);
+            }
         }
         Chain.theBlockchain.add(blocks);
         for (int j = 0; j < 100; j ++) {
             Block[] blocks2 = new Block[generals.size()];
             for (int i = 0; i < generals.size(); i ++) {
-                blocks2[i] = (generals.get(i).proposeBlock());
+                if (generals.get(i).getTrust()) {
+                    blocks2[i] = (generals.get(i).proposeBlock());
+                }
             }
             String[] holay = new String[blocks2.length];
             for (int i = 0; i < blocks2.length; i ++) {

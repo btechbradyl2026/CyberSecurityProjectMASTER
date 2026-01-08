@@ -1,16 +1,16 @@
 import java.util.Random;
 
 public class Generals {
-
+boolean trust;
     public Generals() {
-        boolean trust = true;
+        setTrust(true);
 
         Random random = new Random();
         int min = 1;
         int max = 1000;
         int randomNumber = random.nextInt(max - min + 1) + min;
         if (isPrime(randomNumber)) {
-            trust = false;
+            setTrust(false);
         }
     }
 
@@ -31,7 +31,13 @@ public class Generals {
         return minecraft;
     }
 
+    public boolean getTrust() {
+        return trust;
+    }
 
+    public void setTrust(boolean trust) {
+        this.trust = trust;
+    }
 
     public static boolean isPrime(int n) {
         // Numbers less than or equal to 1 are not prime
@@ -50,5 +56,6 @@ public class Generals {
         // If no divisors were found, the number is prime
         return true;
     }
+
 
 }

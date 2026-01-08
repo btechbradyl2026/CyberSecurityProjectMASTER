@@ -12,7 +12,7 @@ public class Block {
         previousHash = previousH;
 
 
-        hash = Sha256Hasher.hashString(previousHash) + " : " + msg.getMessage()[1] + " : " + msg.getMessage()[0] + " : " + Sha256Hasher.hashString(Sha256Hasher.hashString(previousHash) + " : " + msg.getMessage()[1] + " : " + msg.getMessage()[0]);
+        hash = (previousHash) + " : " + msg.getMessage()[1] + " : " + msg.getMessage()[0] + " : " + Sha256Hasher.hashString(Sha256Hasher.hashString(previousHash) + " : " + msg.getMessage()[1] + " : " + msg.getMessage()[0]);
         if (previousH.equals("0000000000")) {
             genesis = true;
             hash = "0000000000" + " : " + msg.getMessage()[1] +  " : " + msg.getMessage()[0] + " : " + Sha256Hasher.hashString("0000000000" + " : " + msg.getMessage()[1] +  " : " + msg.getMessage()[0]);
@@ -24,6 +24,11 @@ public class Block {
 
     public String getHash() {
         return hash;
+    }
+
+    public String getTrueHash(){
+        String[] temp = hash.split(":");
+        return temp[5];
     }
 
 }

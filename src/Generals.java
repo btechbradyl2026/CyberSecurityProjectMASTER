@@ -16,8 +16,7 @@ public class Generals {
 
     public Message getMessage() {
         String[] rands = {
-                "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "ice", "jungle", "kite", "lemon", "mango", "nectarine", "orange", "peach", "quartz", "river", "stone", "tree", "umbrella", "violet", "water", "xylophone", "yarn", "zebra", "cloud", "dream", "echo", "flame", "glow", "horizon", "island", "journey", "king", "light", "mountain", "night", "ocean", "path", "quiet", "rain", "shadow", "thunder", "unity", "valley", "wind", "year", "zenith", "forest", "garden", "harbor", "inspire", "joy", "kindness", "laughter", "memory", "nature", "open", "peace", "quest", "rise", "sun", "time", "under", "vision", "wonder", "youth", "zone", "adventure", "balance", "courage", "destiny", "energy", "freedom", "growth", "hope", "imagine", "justice", "knowledge", "love", "magic", "novel", "optimism", "power", "quality", "respect", "strength", "trust", "unity", "victory", "wisdom", "xenon", "yearning", "zeal"
-        };
+                "Alice to Bob [$50.00]", "Charlie to Dana [$120.00]", "Edward to Alice [$200.00]", "Bob to Charlie [$35.50]", "Dana to Edward [$75.25]", "Frank to Sarah [$100.00]", "James to Robert [$1500.00]", "Linda to Alex [$50.00]", "Alex to George [$30.00]", "Sarah to James [$25.00]", "Henry to Victor [$600.00]", "Bob to Alice [$15.00]", "Charlie to Bob [$10.00]", "Dana to Sarah [$45.00]", "James to Thomas [$85.40]", "Alice to Maria [$500.00]", "Edward to Bob [$12.00]", "Sarah to Dana [$22.10]", "Alex to James [$60.00]", "Oscar to Alice [$1000.00]", "Rachel to Steven [$45.00]", "Kevin to Laura [$90.00]", "Megan to Chris [$115.00]", "Brian to Jessica [$300.00]", "Mark to Sophia [$20.00]", "Paul to Karen [$65.00]", "Gary to Helen [$12.50]", "Nancy to Jeff [$210.00]", "Larry to Ruth [$80.00]", "Anna to Mike [$55.00]", "Diana to Eric [$140.00]", "Justin to Chloe [$33.00]", "Ryan to Amber [$75.00]", "Scott to Lisa [$95.00]", "Kyle to Maria [$110.00]", "Joe to Ben [$25.00]", "Tina to Rose [$40.00]", "Peter to Sam [$18.00]", "Emily to Jack [$250.00]", "Logan to Oliver [$15.00]", "Emma to Noah [$300.00]", "Lucas to Mia [$70.00]", "Ethan to Ava [$85.00]", "Mason to Sofia [$125.00]", "Jacob to Ella [$40.00]", "Logan to Avery [$60.00]", "Levi to Scarlett [$110.00]", "Daniel to Victoria [$200.00]", "Jack to Grace [$55.00]", "Owen to Zoey [$90.00]"        };
         Random random = new Random();
         int min = 0;
         int max = rands.length - 1;
@@ -28,7 +27,7 @@ public class Generals {
 
     public Block proposeBlock() {
         Block minecraft;
-        minecraft = new Block(getMessage(), Chain.theBlockchain.getLast().hash);
+        minecraft = new Block(getMessage(), Chain.theBlockchain.getLast().getTrueHash());
         return minecraft;
     }
 

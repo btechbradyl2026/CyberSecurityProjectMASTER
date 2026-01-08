@@ -7,32 +7,31 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Message msg = new Message("yahoo!");
         Block blocks = new Block(msg, "0000000000");
-
-        String[] words = {
-                "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "ice", "jungle", "kite", "lemon", "mango", "nectarine", "orange", "peach", "quartz", "river", "stone", "tree", "umbrella", "violet", "water", "xylophone", "yarn", "zebra", "cloud", "dream", "echo", "flame", "glow", "horizon", "island", "journey", "king", "light", "mountain", "night", "ocean", "path", "quiet", "rain", "shadow", "thunder", "unity", "valley", "wind", "year", "zenith", "forest", "garden", "harbor", "inspire", "joy", "kindness", "laughter", "memory", "nature", "open", "peace", "quest", "rise", "sun", "time", "under", "vision", "wonder", "youth", "zone", "adventure", "balance", "courage", "destiny", "energy", "freedom", "growth", "hope", "imagine", "justice", "knowledge", "love", "magic", "novel", "optimism", "power", "quality", "respect", "strength", "trust", "unity", "victory", "wisdom", "xenon", "yearning", "zeal"
-        };
         ArrayList<Generals> generals = new ArrayList<>();
         for (int i = 0; i < 100; i ++) {
             generals.add(new Generals());
         }
-        Message[] msgs = new Message[words.length];
-        for (int i = 0; i < words.length; i ++) {
-            msgs[i] = new Message(words[i]);
-        }
         Chain.theBlockchain.add(blocks);
-        Block[] blocks2 = new Block[generals.size()];
-        for (int i = 0; i < generals.size(); i ++) {
-            blocks2[i] = (generals.get(i).proposeBlock());
+        for (int j = 0; j < 100; j ++) {
+            Block[] blocks2 = new Block[generals.size()];
+            for (int i = 0; i < generals.size(); i ++) {
+                blocks2[i] = (generals.get(i).proposeBlock());
+            }
+            String[] holay = new String[blocks2.length];
+            for (int i = 0; i < blocks2.length; i ++) {
+                holay[i] = (blocks2[i].getTrueHash());
+            }
+            String molay = MostFrequentString.findMostFrequent(holay);
+            for (int i = 0; i < blocks2.length; i ++) {
+                if (blocks2[i].getTrueHash().equals(molay)) {
+                    Chain.theBlockchain.add(blocks2[i]);
+                    i = blocks2.length;
+                }
+            }
         }
-        System.out.println(blocks2);
-        String[] holay = new String[blocks2.length];
-        for (int i = 0; i < blocks2.length; i ++) {
-            holay[i] = (blocks2[i].getHash());
-        }
-        MostFrequentString.findMostFrequent(holay);
-        System.out.println(MostFrequentString.findMostFrequent(holay));
 
         // holy fucking shit, the above code finds the most frequent hash in a block, blocks have hashes not strings, figure out how to compare this hash to the blocks and then add the blocks to the blockchain, might have to fake it with parsing to get the hash codes correct.
+
 
 //        for (int j = 0; j < generals.size(); j ++) {
 //            Block[] hewn = new Block[generals.size()];
